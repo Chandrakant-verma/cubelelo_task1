@@ -4,11 +4,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
+import {userRouter} from "./src/routes/user_router.js";
+import{ managerRouter} from "./src/routes/manager_router.js";
 
 const app = express();
 dotenv.config( {path:"./.env"} );
 app.use(express.static("public"));
-
 
 app.use(cors({  origin: process.env.CORS_ORIGIN,credentials : true  }))
 
@@ -19,6 +20,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
+
+app.use("/users",userRouter);
+app.use("/mangars",managerRouter);
+app.use("/",(req, res)=>{
+    res.render("first_page");
+})
 
 const connectDB = async()=>{
        

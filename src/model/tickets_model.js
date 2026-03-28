@@ -35,7 +35,7 @@ const ticketSchema = new Schema(
         priority:{
              type: String,
              required: true,
-             enum: ["hight", "medium", "low"]
+             enum: ["high", "medium", "low"]
         },
 
         refreshToken: {
