@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Analytics Dashboard</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 20px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: 220px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .card p {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<% 
+let total = list.length;
+
+let unresolved = list.filter(ticket => ticket.status === "open");
+let resolved = list.filter(ticket => ticket.status === "resolved");
+
+let damaged = list.filter(ticket => ticket.category === "damaged product");
+let delivery_delay = list.filter(ticket => ticket.category === "delivery delay");
+let replacement_delay = list.filter(ticket => ticket.category === "replacement delay");
+let wrong_item = list.filter(ticket => ticket.category === "wrong item");
+let product_quality = list.filter(ticket => ticket.category === "product quality");
+let refund = list.filter(ticket => ticket.category === "refund");
+
+let high = list.filter(ticket => ticket.priority === "high");
+let medium = list.filter(ticket => ticket.priority === "medium");
+let low = list.filter(ticket => ticket.priority === "low");
+
+let resolutionRate = total > 0 ? ((resolved.length / total) * 100).toFixed(1) : 0;
+%>
+
+<h2>Overview</h2>
+<div class="container">
+  <div class="card">
+    <h3>Total Tickets</h3>
+    <p><%= total %></p>
+  </div>
+
+  <div class="card">
+    <h3>Unresolved</h3>
+    <p><%= unresolved.length %></p>
+  </div>
+
+  <div class="card">
+    <h3>Resolved</h3>
+    <p><%= resolved.length %></p>
+  </div>
+
+  <div class="card">
+    <h3>Resolution Rate</h3>
+    <p><%= resolutionRate %>%</p>
+  </div>
+</div>
+
+<h2>Issue Categories</h2>
+<div class="container">
+  <div class="card"><h3>Delivery Delay</h3><p><%= delivery_delay.length %></p></div>
+  <div class="card"><h3>Damaged Product</h3><p><%= damaged.length %></p></div>
+  <div class="card"><h3>Replacement Delay</h3><p><%= replacement_delay.length %></p></div>
+  <div class="card"><h3>Wrong Item</h3><p><%= wrong_item.length %></p></div>
+  <div class="card"><h3>Product Quality</h3><p><%= product_quality.length %></p></div>
+  <div class="card"><h3>Refund</h3><p><%= refund.length %></p></div>
+</div>
+
+
+<h2>Priority</h2>
+<div class="container">
+  <div class="card"><h3>High</h3><p><%= high.length %></p></div>
+  <div class="card"><h3>Medium</h3><p><%= medium.length %></p></div>
+  <div class="card"><h3>Low</h3><p><%= low.length %></p></div>
+</div>
+
+<h2>Insights</h2>
+<div class="container">
+  <div class="card">
+    <h3>Most Common Issue</h3>
+    <p>
+      <%
+        let max = Math.max(
+          delivery_delay.length,
+          damaged.length,
+          replacement_delay.length,
+          wrong_item.length,
+          product_quality.length,
+          refund.length
+        );
+
+        let issue = "";
+        if (max === delivery_delay.length) issue = "Delivery Delay";
+        else if (max === damaged.length) issue = "Damaged Product";
+        else if (max === replacement_delay.length) issue = "Replacement Delay";
+        else if (max === wrong_item.length) issue = "Wrong Item";
+        else if (max === product_quality.length) issue = "Product Quality";
+        else issue = "Refund";
+      %>
+      <%= issue %>
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>High Priority %</h3>
+    <p><%= total > 0 ? ((high.length / total) * 100).toFixed(1) : 0 %>%</p>
+  </div>
+</div>
+
+</body>
+</html>

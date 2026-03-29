@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pattern</title>
+</head>
+<body>
+  <div class = "container">
+        <% for( let element in list ) { %>
+                <div class = "one_element">
+                  
+                     customer name is : <div name = "customername"><%= list[element].customername %></div>
+                     product name is : <div name = "productname"><%= list[element].productname %></div>
+                     issue catagory is : <div name = "category"><%= list[ element].category %></div>
+                     status : <div name = "status"><%= list[element].status %></div>
+                </div>
+        <% } %>
+        </div>
+</body>
+</html>

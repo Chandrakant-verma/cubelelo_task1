@@ -18,7 +18,7 @@ const createTicket = async(req,res)=>{
      }
      
      console.log("successfully created ticket:",ticket);
-     res.end();
+     res.render("first_page");
 }
 
 export { createTicket};
