@@ -95,7 +95,9 @@ const getList = async(req, res)=> {
 const seeUresolved = async(req, res) => {
 
      const list = await Ticket.find({status : "open"});
-
+     if( !list){
+        console.log("list not generated");
+     }
      res.render("seeunresolved",{list: list});
 }
 
