@@ -92,14 +92,21 @@ const getList = async(req, res)=> {
      res.render("getList",{list: list});
 }
 
-const seeUresolved = async(req, res) => {
+const seeUresolved = async (req, res) => {
+  try {
+    const list = await Ticket.find({ status: "open" });
 
-     const list = await Ticket.find({status : "open"});
-     if( !list){
-        console.log("list not generated");
-     }
-     res.render("seeunresolved",{list: list});
-}
+    if (list.length === 0) {
+      console.log("No unresolved tickets found");
+    }
+
+    res.render("seeunresolved", { list: list });
+
+  } catch (error) {
+    console.error("Error in seeUresolved:", error);
+    res.status(500).send("Internal Server Error");
+  }
+};
 
 const pattern = async(req, res) => {
 
