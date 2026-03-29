@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 
 app.use("/users",userRouter);
-app.use("/mangars",managerRouter);
+app.use("/managers",managerRouter);
 app.use("/",(req, res)=>{
     res.render("first_page");
 })
