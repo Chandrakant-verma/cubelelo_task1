@@ -1,0 +1,175 @@
+/* summary_style.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f4f8;
+  padding: 40px 20px;
+}
+
+h2 {
+  color: #0066cc;
+  font-size: 24px;
+  margin: 30px 0 20px 0;
+  text-align: center;
+}
+
+h2:first-of-type {
+  margin-top: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e7ef;
+  flex: 1;
+  min-width: 150px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+}
+
+.card h3 {
+  color: #0066cc;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card p {
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Summary section styling */
+.summary {
+  background: white;
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e7ef;
+}
+
+.summary p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.summary p:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.summary b {
+  color: #0066cc;
+  font-weight: 700;
+}
+
+/* Specific sizing for overview cards */
+.container:first-of-type .card {
+  min-width: 180px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 30px 15px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin: 25px 0 15px 0;
+  }
+  
+  .card {
+    min-width: 130px;
+    padding: 15px;
+  }
+  
+  .card p {
+    font-size: 24px;
+  }
+  
+  .card h3 {
+    font-size: 14px;
+  }
+  
+  .summary {
+    padding: 20px;
+    margin: 15px auto 0;
+  }
+  
+  .summary p {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    gap: 15px;
+  }
+  
+  .card {
+    min-width: calc(50% - 15px);
+  }
+  
+  .container:first-of-type .card {
+    min-width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 10px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 12px 0;
+  }
+  
+  .card {
+    min-width: 100%;
+  }
+  
+  .card p {
+    font-size: 22px;
+  }
+  
+  .summary {
+    padding: 15px;
+  }
+  
+  .summary p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}

@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { getList,seeUresolved, pattern, summary } from "../controller/manager_controller.js";
+import { getList,seeUresolved, pattern, summary, loginManager, registerManager } from "../controller/manager_controller.js";
 const managerRouter = Router();
 
-managerRouter.get("/dashboard",(req, res)=>{
-  res.render("manager_dashboard");
+managerRouter.get("/authentication",(req, res)=>{
+   res.render("manager_authentication");
 })
 
+managerRouter.post("/login",loginManager);
+managerRouter.post("/register",registerManager);
 managerRouter.get("/getList",getList);
 managerRouter.get("/unresolved",seeUresolved);
 managerRouter.get("/pattern",pattern);

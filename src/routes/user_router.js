@@ -1,12 +1,15 @@
 import { Router } from "express";
-import {createTicket} from "../controller/user_controller.js";
+import {createTicket,loginUser,registerUser} from "../controller/user_controller.js";
 
 const userRouter = Router();
 
-userRouter.get("/dashboard",(req,res)=>{
-  res.render("user_dashboard");
+userRouter.post("/create_ticket",createTicket);
+
+userRouter.get("/authentication",(req,res)=>{
+  res.render("user_authentication");
 })
 
-userRouter.post("/create_ticket",createTicket);
+userRouter.post("/login",loginUser);
+userRouter.post("/register", registerUser);
 
 export { userRouter};

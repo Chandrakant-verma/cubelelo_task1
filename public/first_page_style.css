@@ -1,0 +1,67 @@
+/* first_page_style.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f4f8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 50px 60px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  color: #0066cc;
+  border: 2px solid #0066cc;
+  box-shadow: 0 2px 5px rgba(0, 102, 204, 0.2);
+}
+
+button:hover {
+  background: #0066cc;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 102, 204, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 102, 204, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 30px;
+  }
+  
+  button {
+    width: 200px;
+    padding: 12px 24px;
+  }
+}

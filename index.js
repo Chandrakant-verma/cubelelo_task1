@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import {userRouter} from "./src/routes/user_router.js";
 import{ managerRouter} from "./src/routes/manager_router.js";
+import { checkUser } from "./src/controller/common.js";
 
 const app = express();
 dotenv.config( {path:"./.env"} );
@@ -23,9 +24,7 @@ app.use(cookieParser());
 
 app.use("/users",userRouter);
 app.use("/managers",managerRouter);
-app.use("/",(req, res)=>{
-    res.render("first_page");
-})
+app.use("/",checkUser);
 
 const connectDB = async()=>{
        
