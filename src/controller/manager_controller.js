@@ -100,7 +100,7 @@ const seeUresolved = async (req, res) => {
       console.log("No unresolved tickets found");
     }
 
-    res.render("seeunresolved", { list: list });
+    res.render("seeUnresolved", { list: list });
 
   } catch (error) {
     console.error("Error in seeUresolved:", error);
