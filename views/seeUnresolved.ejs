@@ -9,7 +9,7 @@
 
 <body>
 
-<h2>All Tickets</h2>
+<h2>Unresolved Tickets</h2>
 
 <div class="container">
 
@@ -33,9 +33,9 @@
       </div>
 
       <div class="field">
-        <span class="label">Status:</span>
-        <span class="<%= ticket.status === 'open' ? 'status-open' : 'status-resolved' %>">
-          <%= ticket.status %>
+        <span class="label">why:</span>
+        <span class="value">
+          <%= ticket.issue %>
         </span>
       </div>
 
